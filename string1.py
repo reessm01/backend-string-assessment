@@ -15,6 +15,7 @@
 # It's ok if you do not complete all the functions, and there
 # are some additional functions to try in string2.py.
 
+import sys
 
 # A. donuts
 # Given an int count of a number of donuts, return a string
@@ -24,8 +25,7 @@
 # So donuts(5) returns 'Number of donuts: 5'
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
-    """Your code goes here.  Edit this docstring."""
-    return
+    return "Number of donuts: many" if count >= 10 else "Number of donuts: " + str(count)
 
 
 # B. both_ends
@@ -34,8 +34,7 @@ def donuts(count):
 # so 'spring' yields 'spng'. However, if the string length
 # is less than 2, return instead the empty string.
 def both_ends(s):
-    """Your code goes here.  Edit this docstring."""
-    return
+    return (s[0:2] + s[-2:]) if len(s) >= 2 else ""
 
 
 # C. fix_start
@@ -48,8 +47,11 @@ def both_ends(s):
 # Hint: s.replace(stra, strb) returns a version of string s
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
-    """Your code goes here.  Edit this docstring."""
-    return
+    first_char = s[0] 
+    while(s.rfind(first_char) != 0):
+        index_change = s.rfind(first_char)
+        s = s[0:index_change] + "*" + s[index_change + 1:]
+    return s
 
 
 # D. MixUp
@@ -60,8 +62,7 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    """Your code goes here.  Edit this docstring."""
-    return
+    return b[0:2] + a[2:] + " " + a[0:2] + b[2:]
 
 
 # Provided simple test() function used in main() to print
@@ -110,4 +111,5 @@ def main():
 
 # Standard boilerplate (python idiom) to call the main() function.
 if __name__ == '__main__':
+    print(sys.argv[1:])
     main()
